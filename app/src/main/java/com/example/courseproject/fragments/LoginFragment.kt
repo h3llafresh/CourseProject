@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import com.example.courseproject.viewmodels.LoginViewModel
 import com.example.courseproject.R
 import com.example.courseproject.databinding.FragmentLoginBinding
@@ -26,10 +27,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        binding.loginInputWrapper.typeface = ResourcesCompat.getFont(requireContext(),
+        binding.loginInputWrapper.typeface = ResourcesCompat.getFont(
+            requireContext(),
             R.font.raleway
         )
-        binding.passwordInputWrapper.typeface = ResourcesCompat.getFont(requireContext(),
+        binding.passwordInputWrapper.typeface = ResourcesCompat.getFont(
+            requireContext(),
             R.font.raleway
         )
         return binding.root
@@ -45,7 +48,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     binding.loginInputWrapper.error = getString(R.string.empty_login)
                     binding.passwordInputWrapper.error = getString(R.string.empty_password)
                 }
-                loginInputText == "" -> binding.loginInputWrapper.error = getString(R.string.empty_login)
+                loginInputText == "" -> binding.loginInputWrapper.error =
+                    getString(R.string.empty_login)
                 passwordInputText == "" -> {
                     binding.passwordInputWrapper.error = getString(R.string.empty_password)
                     binding.loginInputWrapper.error = null
@@ -53,7 +57,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 else -> {
                     binding.loginInputWrapper.error = null
                     binding.passwordInputWrapper.error = null
-                    Toast.makeText(context, loginViewModel.authorizeUser(loginInputText, passwordInputText), Toast.LENGTH_SHORT).show()
+                    loginViewModel.authorizeUser(loginInputText, passwordInputText, view)
                 }
             }
         }
