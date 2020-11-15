@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">CourseProject</string>
+    <string name="app_name">Sapphire Resort</string>
+    <string name="text_enter_login">Please, enter login</string>
+    <string name="text_enter_password">Please, enter password</string>
+    <string name="text_toolbar_main">sapphire resort</string>
+    <string name="text_service_awaits">World-class service awaits!</string>
+    <string name="text_who_are_you">Just let us know who are You…</string>
+    <string name="empty_login">Empty login field</string>
+    <string name="text_button_login">Login</string>
+    <string name="welcome_sign_description">Welcome sign picture</string>
+    <string name="starting_screen_img_description">Starting screen logo</string>
+    <string name="empty_password">Empty password field</string>
 </resources>
