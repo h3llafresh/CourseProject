@@ -19,4 +19,6 @@
 
     <dimen name="input_border_size">3dp</dimen>
 
+    <dimen name="bottom_menu_height">56dp</dimen>
+
 </resources>

@@ -1,7 +1,6 @@
-package com.example.courseproject.db
+package com.example.courseproject.model
 
 import android.content.Context
-import androidx.room.CoroutinesRoom
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase

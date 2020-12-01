@@ -1,4 +1,4 @@
-package com.example.courseproject.db
+package com.example.courseproject.model
 
 import androidx.room.Dao
 import androidx.room.Insert

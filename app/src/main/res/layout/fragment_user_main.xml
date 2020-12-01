@@ -9,7 +9,7 @@
         layout="@layout/toolbar_main" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/welcome_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hi there, our lovely customer!"
@@ -18,5 +18,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_user_main_toolbar" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_user_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_menu_height"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/raleway"
+        app:itemIconTint="@drawable/bottom_nav_item_color"
+        app:itemTextColor="@drawable/bottom_nav_item_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu_fragment_user_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

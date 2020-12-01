@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_guests_admin"
+        android:title="@string/bottom_menu_guests_admin_main"
+        android:icon="@drawable/ic_guests" />
+    <item android:id="@+id/action_menu_admin"
+        android:title="@string/bottom_menu_restaurant_menu"
+        android:icon="@drawable/ic_restaurant_menu" />
+    <item android:id="@+id/action_services_admin"
+        android:title="@string/bottom_menu_services"
+        android:icon="@drawable/ic_services" />
+</menu>

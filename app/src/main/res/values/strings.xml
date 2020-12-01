@@ -10,4 +10,8 @@
     <string name="welcome_sign_description">Welcome sign picture</string>
     <string name="starting_screen_img_description">Starting screen logo</string>
     <string name="empty_password">Empty password field</string>
+    <string name="bottom_menu_guests_admin_main">Guests</string>
+    <string name="bottom_menu_restaurant_menu">Menu</string>
+    <string name="bottom_menu_services">Services</string>
+    <string name="bottom_menu_expenses_user_main">Expenses</string>
 </resources>

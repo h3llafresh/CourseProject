@@ -1,11 +1,9 @@
 package com.example.courseproject.fragments
 
-import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.courseproject.Constants.APP_PREFERENCES
 import com.example.courseproject.R
 import com.example.courseproject.viewmodels.StartingScreenViewModel
 

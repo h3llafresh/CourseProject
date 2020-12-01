@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
-import com.example.courseproject.viewmodels.LoginViewModel
 import com.example.courseproject.R
 import com.example.courseproject.databinding.FragmentLoginBinding
+import com.example.courseproject.viewmodels.LoginViewModel
 
-class LoginFragment : Fragment(R.layout.fragment_login) {
+class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
 
@@ -25,7 +23,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.loginInputWrapper.typeface = ResourcesCompat.getFont(
             requireContext(),

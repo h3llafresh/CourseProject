@@ -10,10 +10,11 @@ import com.example.courseproject.Constants.APP_PREFERENCES
 import com.example.courseproject.Constants.AUTHORIZATION_STATE
 import com.example.courseproject.Constants.IS_ADMIN
 import com.example.courseproject.HotelRepository
-import com.example.courseproject.db.HotelRoomDatabase
-import com.example.courseproject.db.LoginEntity
 import com.example.courseproject.fragments.LoginFragmentDirections
-import kotlinx.coroutines.*
+import com.example.courseproject.model.HotelRoomDatabase
+import com.example.courseproject.model.LoginEntity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -28,15 +29,11 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         repository = HotelRepository(loginDao)
     }
 
-    fun insert(newLogin: LoginEntity) = viewModelScope.launch(Dispatchers.IO) {
-        repository.insertLogin(newLogin)
-    }
-
     private fun getUserLoginData(inputLogin: String): LoginEntity? {
-        val loginEntityDef: Deferred<LoginEntity?> = viewModelScope.async(Dispatchers.IO) {
-            repository.getUserLoginData(inputLogin)
+       viewModelScope.launch(Dispatchers.IO) {
+            userLoginData = repository.getUserLoginData(inputLogin)
         }
-        return runBlocking { loginEntityDef.await() }
+        return userLoginData
     }
 
     fun authorizeUser(inputLogin: String, inputPassword: String, view: View) {
