@@ -14,4 +14,6 @@
     <string name="bottom_menu_restaurant_menu">Menu</string>
     <string name="bottom_menu_services">Services</string>
     <string name="bottom_menu_expenses_user_main">Expenses</string>
+    <string name="add_image_desc">add image</string>
+    <string name="welcome_admin_phrase">Cheery greetings to our dear admin</string>
 </resources>

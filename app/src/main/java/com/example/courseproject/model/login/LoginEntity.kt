@@ -1,11 +1,11 @@
-package com.example.courseproject.model
+package com.example.courseproject.model.login
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "logins_and_passwords")
-class LoginEntity(
+data class LoginEntity(
     @PrimaryKey(autoGenerate = true) val loginID: Int,
     @ColumnInfo val login: String,
     @ColumnInfo val password: String,

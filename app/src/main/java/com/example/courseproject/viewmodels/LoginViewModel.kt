@@ -12,7 +12,7 @@ import com.example.courseproject.Constants.IS_ADMIN
 import com.example.courseproject.HotelRepository
 import com.example.courseproject.fragments.LoginFragmentDirections
 import com.example.courseproject.model.HotelRoomDatabase
-import com.example.courseproject.model.LoginEntity
+import com.example.courseproject.model.login.LoginEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -25,8 +25,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     var userLoginData: LoginEntity? = null
 
     init {
-        val loginDao = HotelRoomDatabase.getDatabase(application, viewModelScope).loginDao()
-        repository = HotelRepository(loginDao)
+        val hotelDatabase = HotelRoomDatabase.getDatabase(application, viewModelScope)
+        repository = HotelRepository(hotelDatabase)
     }
 
     private fun getUserLoginData(inputLogin: String): LoginEntity? {
