@@ -16,4 +16,15 @@
     <string name="bottom_menu_expenses_user_main">Expenses</string>
     <string name="add_image_desc">add image</string>
     <string name="welcome_admin_phrase">Cheery greetings to our dear admin</string>
+    <string name="add_guest_first_name">Guest first name</string>
+    <string name="add_guest_last_name">Guest last name</string>
+    <string name="add_guest_birth_date">Guest birth date (DD.MM.YYYY)</string>
+    <string name="add_guest_phone_number">Guest phone number</string>
+    <string name="add_check_in_date">Check in date (DD.MM.YYYY)</string>
+    <string name="add_check_out_date">Check out date (DD.MM.YYYY)</string>
+    <string name="sum_to_pay">Sum to pay (USD)</string>
+    <string name="add_regular_customer">Regular customer</string>
+    <string name="add_has_extra_service">Has extra service</string>
+    <string name="button_add_text">ADD</string>
+    <string name="text_add_user">Add user</string>
 </resources>

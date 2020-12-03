@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "guests")
 data class GuestEntity(
-    @PrimaryKey(autoGenerate = true) val guestID: Int,
+    @PrimaryKey(autoGenerate = true) val guestID: Int = 0,
     @ColumnInfo val firstName: String,
     @ColumnInfo val secondName: String,
     @ColumnInfo val birthDate: String,
@@ -16,7 +16,7 @@ data class GuestEntity(
     @ColumnInfo val hasExtraService: Int,
     @ColumnInfo val sumToPay: Int,
     @ColumnInfo val isRegularCustomer: Int,
-    @ColumnInfo val guestLoginID: Int
+    @ColumnInfo val guestLoginID: Int = guestID
     )
 
 

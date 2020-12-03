@@ -20,6 +20,7 @@ class UserMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentUserMainBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
