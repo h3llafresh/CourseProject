@@ -53,14 +53,36 @@
         <action
             android:id="@+id/action_adminMainFragment_to_addUserFragment"
             app:destination="@id/addUserFragment" />
+        <action
+            android:id="@+id/action_adminMainFragment_to_guestInfoFragment"
+            app:destination="@id/guestInfoFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/userMainFragment"
-        android:name="com.example.courseproject.fragments.UserMainFragment"
+        android:name="com.example.courseproject.fragments.GuestMainFragment"
         android:label="UserMainFragment" />
     <fragment
         android:id="@+id/addUserFragment"
-        android:name="com.example.courseproject.fragments.AddGuestFragment"
+        android:name="com.example.courseproject.fragments.GuestAddFragment"
         android:label="AddUserFragment" />
+    <fragment
+        android:id="@+id/guestInfoFragment"
+        android:name="com.example.courseproject.fragments.GuestInfoFragment"
+        android:label="GuestInfoFragment" >
+        <argument
+            android:name="guestID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_guestInfoFragment_to_guestUpdateFragment"
+            app:destination="@id/guestUpdateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/guestUpdateFragment"
+        android:name="com.example.courseproject.fragments.GuestUpdateFragment"
+        android:label="GuestUpdateFragment" >
+        <argument
+            android:name="guestID"
+            app:argType="integer" />
+    </fragment>
 </navigation>

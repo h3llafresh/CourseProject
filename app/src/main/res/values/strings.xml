@@ -28,4 +28,8 @@
     <string name="button_add_text">ADD</string>
     <string name="text_add_guest">Add guest</string>
     <string name="guest_info_text">Guest info</string>
+    <string name="update_image_desc">update image</string>
+    <string name="delete_image_desc">delete image</string>
+    <string name="button_update_text">UPDATE</string>
+    <string name="text_update_guest">Update guest</string>
 </resources>

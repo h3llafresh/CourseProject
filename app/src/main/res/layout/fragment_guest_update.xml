@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/update_guest_text_view_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_24"
+                android:fontFamily="@font/raleway"
+                android:text="@string/text_update_guest"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_30"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/first_name_wrapper_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_8"
+                app:boxStrokeColor="@color/colorAccent"
+                app:boxStrokeWidth="@dimen/input_border_size"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/update_guest_text_view_update">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/first_name_input_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_guest_first_name"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:textSize="@dimen/text_size_20" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/last_name_wrapper_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_8"
+                app:boxStrokeColor="@color/colorAccent"
+                app:boxStrokeWidth="@dimen/input_border_size"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/first_name_wrapper_update">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/last_name_input_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_guest_last_name"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:textSize="@dimen/text_size_20" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phone_number_wrapper_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_8"
+                app:boxStrokeColor="@color/colorAccent"
+                app:boxStrokeWidth="@dimen/input_border_size"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/last_name_wrapper_update">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phone_number_input_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_guest_phone_number"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:textSize="@dimen/text_size_20" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/birth_date_wrapper_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_8"
+                app:boxStrokeColor="@color/colorAccent"
+                app:boxStrokeWidth="@dimen/input_border_size"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phone_number_wrapper_update">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/birth_date_input_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_guest_birth_date"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:textSize="@dimen/text_size_20" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/check_in_wrapper_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_8"
+                app:boxStrokeColor="@color/colorAccent"
+                app:boxStrokeWidth="@dimen/input_border_size"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/birth_date_wrapper_update">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/check_in_date_input_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_check_in_date"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:textSize="@dimen/text_size_20" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/check_out_wrapper_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_8"
+                app:boxStrokeColor="@color/colorAccent"
+                app:boxStrokeWidth="@dimen/input_border_size"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check_in_wrapper_update">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/check_out_date_input_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_check_out_date"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:textSize="@dimen/text_size_20" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sum_to_pay_wrapper_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_8"
+                app:boxStrokeColor="@color/colorAccent"
+                app:boxStrokeWidth="@dimen/input_border_size"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check_out_wrapper_update">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sum_to_pay_input_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sum_to_pay"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:textSize="@dimen/text_size_20" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_regular_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginStart="@dimen/margin_8"
+                android:hint="@string/add_regular_customer"
+                android:textSize="@dimen/text_size_20"
+                android:fontFamily="@font/raleway"
+                app:layout_constraintTop_toBottomOf="@id/sum_to_pay_wrapper_update"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_extra_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_8"
+                android:hint="@string/add_has_extra_service"
+                android:textSize="@dimen/text_size_20"
+                android:fontFamily="@font/raleway"
+                app:layout_constraintTop_toBottomOf="@id/radio_regular_customer"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <Button
+                android:id="@+id/button_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginBottom="@dimen/margin_32"
+                android:background="@drawable/rounded_corners_primary_dark"
+                android:fontFamily="@font/raleway"
+                android:text="@string/button_update_text"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radio_extra_service" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

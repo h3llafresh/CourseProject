@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.courseproject.R
 import com.example.courseproject.databinding.FragmentUserMainBinding
 
-class UserMainFragment : Fragment() {
+class GuestMainFragment : Fragment() {
     private var _binding: FragmentUserMainBinding? = null
 
     private val binding get() = _binding!!

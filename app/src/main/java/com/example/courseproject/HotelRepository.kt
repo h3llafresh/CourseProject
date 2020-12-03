@@ -14,12 +14,17 @@ class HotelRepository(private val hotelDatabase: HotelRoomDatabase) {
 
     var guests: Flow<List<GuestEntity>>? = null
 
+
     suspend fun getUserLoginData(inputLogin: String): LoginEntity {
         return loginDao.getUserLogin(inputLogin)
     }
 
     suspend fun insertLogin(newLogin: LoginEntity) {
         loginDao.insertLogin(newLogin)
+    }
+
+    suspend fun selectGuest(guestID: Int): GuestEntity {
+        return guestDao.selectGuest(guestID)
     }
 
     fun refreshGuests() {
@@ -30,4 +35,11 @@ class HotelRepository(private val hotelDatabase: HotelRoomDatabase) {
         guestDao.insertGuest(guest)
     }
 
+    suspend fun deleteGuest(guest: GuestEntity) {
+        guestDao.deleteGuest(guest)
+    }
+
+    suspend fun updateGuest(guest: GuestEntity) {
+        guestDao.updateGuest(guest)
+    }
 }

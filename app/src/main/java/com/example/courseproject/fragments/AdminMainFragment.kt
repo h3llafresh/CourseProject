@@ -37,7 +37,6 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val welcomeText = binding.welcomeAdmin
         val bottomNav = binding.bottomNavigationAdminMain
         val recyclerGuests = binding.recyclerGuestsAdminMain
         val guestAdapter = GuestAdapter(this)
@@ -45,15 +44,12 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
         bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.action_guests_admin -> {
-                    welcomeText.visibility = GONE
                     recyclerGuests.visibility = VISIBLE
                 }
                 R.id.action_menu_admin -> {
-                    welcomeText.visibility = GONE
                     recyclerGuests.visibility = GONE
                 }
                 R.id.action_services_admin -> {
-                    welcomeText.visibility = VISIBLE
                     recyclerGuests.visibility = GONE
                 }
             }
@@ -70,15 +66,20 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
             guestAdapter.addItems(it)
         })
 
-        binding.floatingActionButton.setOnClickListener{
+        binding.floatingActionButton.setOnClickListener {
             when (bottomNav.selectedItemId) {
                 R.id.action_guests_admin -> {
-                    val action = AdminMainFragmentDirections.actionAdminMainFragmentToAddUserFragment()
+                    val action =
+                        AdminMainFragmentDirections.actionAdminMainFragmentToAddUserFragment()
                     findNavController().navigate(action)
                 }
                 R.id.action_menu_admin -> Toast.makeText(context, "Add dish", Toast.LENGTH_SHORT)
                     .show()
-                R.id.action_services_admin -> Toast.makeText(context, "Add service", Toast.LENGTH_SHORT).show()
+                R.id.action_services_admin -> Toast.makeText(
+                    context,
+                    "Add service",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -86,31 +87,29 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
     override fun onStart() {
         super.onStart()
         val bottomNav = binding.bottomNavigationAdminMain
-        val welcomeText = binding.welcomeAdmin
         val recyclerGuests = binding.recyclerGuestsAdminMain
         when (bottomNav.selectedItemId) {
             R.id.action_guests_admin -> {
                 recyclerGuests.visibility = VISIBLE
-                welcomeText.visibility = GONE
             }
             R.id.action_menu_admin -> {
                 recyclerGuests.visibility = GONE
-                welcomeText.visibility = GONE
             }
             R.id.action_services_admin -> {
                 recyclerGuests.visibility = GONE
-                welcomeText.visibility = VISIBLE
             }
         }
     }
 
     override fun onDestroyView() {
-        
+
         super.onDestroyView()
         _binding = null
     }
 
     override fun onGuestClicked(guest: GuestEntity) {
-        println("ok")
+        val action =
+            AdminMainFragmentDirections.actionAdminMainFragmentToGuestInfoFragment(guest.guestID)
+        findNavController().navigate(action)
     }
 }

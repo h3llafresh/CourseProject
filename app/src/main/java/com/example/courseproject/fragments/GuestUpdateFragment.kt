@@ -4,37 +4,40 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.courseproject.R
-import com.example.courseproject.databinding.FragmentAddUserBinding
+import com.example.courseproject.databinding.FragmentGuestUpdateBinding
 import com.example.courseproject.model.guest.GuestEntity
-import com.example.courseproject.viewmodels.AddGuestViewModel
-import com.google.android.material.snackbar.Snackbar
+import com.example.courseproject.viewmodels.GuestUpdateViewModel
 import com.google.android.material.textfield.TextInputLayout
 
-class AddGuestFragment : Fragment() {
-
-    private var _binding: FragmentAddUserBinding? = null
+class GuestUpdateFragment : Fragment() {
+    private var _binding: FragmentGuestUpdateBinding? = null
 
     private val binding get() = _binding!!
 
-    private val addGuestViewModel by viewModels<AddGuestViewModel>()
+    private val guestUpdateViewModel by viewModels<GuestUpdateViewModel>()
+
+    private val args: GuestUpdateFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAddUserBinding.inflate(inflater, container, false)
-        setRalewayFont(binding.firstNameWrapper)
-        setRalewayFont(binding.lastNameWrapper)
-        setRalewayFont(binding.phoneNumberWrapper)
-        setRalewayFont(binding.birthDateWrapper)
-        setRalewayFont(binding.checkInWrapper)
-        setRalewayFont(binding.checkOutWrapper)
-        setRalewayFont(binding.sumToPayWrapper)
+        _binding = FragmentGuestUpdateBinding.inflate(inflater, container, false)
+        setRalewayFont(binding.firstNameWrapperUpdate)
+        setRalewayFont(binding.lastNameWrapperUpdate)
+        setRalewayFont(binding.phoneNumberWrapperUpdate)
+        setRalewayFont(binding.birthDateWrapperUpdate)
+        setRalewayFont(binding.checkInWrapperUpdate)
+        setRalewayFont(binding.checkOutWrapperUpdate)
+        setRalewayFont(binding.sumToPayWrapperUpdate)
         return binding.root
     }
 
@@ -51,14 +54,15 @@ class AddGuestFragment : Fragment() {
             hasExtraService = true
         }
 
-        binding.buttonAdd.setOnClickListener {
-            val firstName = binding.firstNameInput.text.toString()
-            val lastName = binding.lastNameInput.text.toString()
-            val phoneNumber = binding.phoneNumberInput.text.toString()
-            val birthDate = binding.birthDateInput.text.toString()
-            val checkInDate = binding.checkInDateInput.text.toString()
-            val checkOutDate = binding.checkOutDateInput.text.toString()
-            val sumToPay = binding.sumToPayInput.text.toString()
+        binding.buttonUpdate.setOnClickListener {
+            val guestID = args.guestID
+            val firstName = binding.firstNameInputUpdate.text.toString()
+            val lastName = binding.lastNameInputUpdate.text.toString()
+            val phoneNumber = binding.phoneNumberInputUpdate.text.toString()
+            val birthDate = binding.birthDateInputUpdate.text.toString()
+            val checkInDate = binding.checkInDateInputUpdate.text.toString()
+            val checkOutDate = binding.checkOutDateInputUpdate.text.toString()
+            val sumToPay = binding.sumToPayInputUpdate.text.toString()
 
             if (firstName.isNotEmpty()
                 && lastName.isNotEmpty()
@@ -69,6 +73,7 @@ class AddGuestFragment : Fragment() {
                 && sumToPay.isNotEmpty()
             ) {
                 val guest = GuestEntity(
+                    guestID = guestID,
                     firstName = firstName,
                     secondName = lastName,
                     birthDate = birthDate,
@@ -79,10 +84,11 @@ class AddGuestFragment : Fragment() {
                     hasExtraService = if (hasExtraService) 1 else 0,
                     isRegularCustomer = if (isRegularCustomer) 1 else 0
                 )
-                addGuestViewModel.addGuest(guest)
-                Snackbar.make(view, "Guest added!", Snackbar.LENGTH_SHORT).show()
+                guestUpdateViewModel.updateGuest(guest)
+                findNavController().popBackStack()
+                Toast.makeText(context, "Guest updated!", Toast.LENGTH_SHORT).show()
             } else {
-                Snackbar.make(view, "Not enough data, sorry", Snackbar.LENGTH_SHORT).show()
+                Toast.makeText(context, "Not enough data, sorry.", Toast.LENGTH_SHORT).show()
             }
         }
     }
