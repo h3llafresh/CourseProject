@@ -7,9 +7,7 @@ import com.example.courseproject.model.guest.GuestEntity
 class GuestViewHolder(private val binding: GuestViewholderBinding) :
     RecyclerView.ViewHolder(binding.root) {
         fun bind(guest: GuestEntity) {
-            val context = binding.root.context
             binding.guestNameViewholder.text = "${guest.firstName} ${guest.secondName}"
-            //TODO: Add room entity
-            binding.guestRoomViewholder.text = "Room 1505"
+            binding.guestRoomViewholder.text = "Room ${guest.guestID}"
         }
 }

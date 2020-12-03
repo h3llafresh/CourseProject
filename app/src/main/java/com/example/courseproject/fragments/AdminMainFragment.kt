@@ -15,9 +15,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.courseproject.R
 import com.example.courseproject.adapters.GuestAdapter
 import com.example.courseproject.databinding.FragmentAdminMainBinding
+import com.example.courseproject.listeners.OnGuestHolderClickListener
+import com.example.courseproject.model.guest.GuestEntity
 import com.example.courseproject.viewmodels.AdminMainViewModel
 
-class AdminMainFragment : Fragment() {
+class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
 
     private var _binding: FragmentAdminMainBinding? = null
     private val binding get() = _binding!!
@@ -38,7 +40,7 @@ class AdminMainFragment : Fragment() {
         val welcomeText = binding.welcomeAdmin
         val bottomNav = binding.bottomNavigationAdminMain
         val recyclerGuests = binding.recyclerGuestsAdminMain
-        val guestAdapter = GuestAdapter()
+        val guestAdapter = GuestAdapter(this)
 
         bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -106,5 +108,9 @@ class AdminMainFragment : Fragment() {
         
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onGuestClicked(guest: GuestEntity) {
+        println("ok")
     }
 }
