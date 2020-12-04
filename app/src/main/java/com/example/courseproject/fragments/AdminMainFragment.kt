@@ -14,12 +14,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.courseproject.R
 import com.example.courseproject.adapters.GuestAdapter
+import com.example.courseproject.adapters.MealAdapter
 import com.example.courseproject.databinding.FragmentAdminMainBinding
 import com.example.courseproject.listeners.OnGuestHolderClickListener
+import com.example.courseproject.listeners.OnMealClickListener
 import com.example.courseproject.model.guest.GuestEntity
+import com.example.courseproject.model.meal.MealEntity
 import com.example.courseproject.viewmodels.AdminMainViewModel
 
-class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
+class AdminMainFragment : Fragment(), OnGuestHolderClickListener, OnMealClickListener {
 
     private var _binding: FragmentAdminMainBinding? = null
     private val binding get() = _binding!!
@@ -39,18 +42,23 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
         super.onViewCreated(view, savedInstanceState)
         val bottomNav = binding.bottomNavigationAdminMain
         val recyclerGuests = binding.recyclerGuestsAdminMain
+        val recyclerMeals = binding.recyclerMenuAdminMain
         val guestAdapter = GuestAdapter(this)
+        val mealAdapter = MealAdapter(this)
 
         bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.action_guests_admin -> {
                     recyclerGuests.visibility = VISIBLE
+                    recyclerMeals.visibility = GONE
                 }
                 R.id.action_menu_admin -> {
                     recyclerGuests.visibility = GONE
+                    recyclerMeals.visibility = VISIBLE
                 }
                 R.id.action_services_admin -> {
                     recyclerGuests.visibility = GONE
+                    recyclerMeals.visibility = GONE
                 }
             }
             true
@@ -61,9 +69,19 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
 
+        recyclerMeals.apply {
+            adapter = mealAdapter
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        }
+
         adminMainViewModel.guests.observe(viewLifecycleOwner, Observer {
             it ?: return@Observer
             guestAdapter.addItems(it)
+        })
+
+        adminMainViewModel.meals.observe(viewLifecycleOwner, Observer {
+            it ?: return@Observer
+            mealAdapter.addItems(it)
         })
 
         binding.floatingActionButton.setOnClickListener {
@@ -73,8 +91,11 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
                         AdminMainFragmentDirections.actionAdminMainFragmentToAddUserFragment()
                     findNavController().navigate(action)
                 }
-                R.id.action_menu_admin -> Toast.makeText(context, "Add dish", Toast.LENGTH_SHORT)
-                    .show()
+                R.id.action_menu_admin -> {
+                    val action =
+                        AdminMainFragmentDirections.actionAdminMainFragmentToMealAddFragment()
+                    findNavController().navigate(action)
+                }
                 R.id.action_services_admin -> Toast.makeText(
                     context,
                     "Add service",
@@ -88,15 +109,19 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
         super.onStart()
         val bottomNav = binding.bottomNavigationAdminMain
         val recyclerGuests = binding.recyclerGuestsAdminMain
+        val recyclerMeals = binding.recyclerMenuAdminMain
         when (bottomNav.selectedItemId) {
             R.id.action_guests_admin -> {
                 recyclerGuests.visibility = VISIBLE
+                recyclerMeals.visibility = GONE
             }
             R.id.action_menu_admin -> {
                 recyclerGuests.visibility = GONE
+                recyclerMeals.visibility = VISIBLE
             }
             R.id.action_services_admin -> {
                 recyclerGuests.visibility = GONE
+                recyclerMeals.visibility = GONE
             }
         }
     }
@@ -110,6 +135,12 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener {
     override fun onGuestClicked(guest: GuestEntity) {
         val action =
             AdminMainFragmentDirections.actionAdminMainFragmentToGuestInfoFragment(guest.guestID)
+        findNavController().navigate(action)
+    }
+
+    override fun onMealClicked(meal: MealEntity) {
+        val action =
+            AdminMainFragmentDirections.actionAdminMainFragmentToMealInfoAdminFragment(meal.mealID)
         findNavController().navigate(action)
     }
 }

@@ -5,10 +5,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.courseproject.HotelRepository
 import com.example.courseproject.model.HotelRoomDatabase
-import com.example.courseproject.model.guest.GuestEntity
+import com.example.courseproject.model.meal.MealEntity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AddGuestViewModel(application: Application) : AndroidViewModel(application) {
+class MealUpdateViewModel(application: Application) : AndroidViewModel(application) {
+
     private val repository: HotelRepository
 
     init {
@@ -16,9 +18,9 @@ class AddGuestViewModel(application: Application) : AndroidViewModel(application
         repository = HotelRepository(hotelDatabase)
     }
 
-    fun addGuest(guest: GuestEntity) {
-        viewModelScope.launch {
-            repository.addGuest(guest)
+    fun updateMeal(mealUpdated: MealEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateMeal(mealUpdated)
         }
     }
 }

@@ -16,15 +16,24 @@ class AdminMainViewModel(application: Application) : AndroidViewModel(applicatio
         val hotelDatabase = HotelRoomDatabase.getDatabase(application, viewModelScope)
         repository = HotelRepository(hotelDatabase)
         refreshGuestsData()
+        refreshMealsData()
     }
 
     private val _guests = repository.guests?.asLiveData()
-
     val guests get() = _guests!!
+
+    private val _meals = repository.meals?.asLiveData()
+    val meals get() = _meals!!
 
     private fun refreshGuestsData() {
         viewModelScope.launch {
             repository.refreshGuests()
+        }
+    }
+
+    private fun refreshMealsData() {
+        viewModelScope.launch {
+            repository.refreshMeals()
         }
     }
 }

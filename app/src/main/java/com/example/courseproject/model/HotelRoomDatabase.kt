@@ -9,15 +9,19 @@ import com.example.courseproject.model.guest.GuestDao
 import com.example.courseproject.model.guest.GuestEntity
 import com.example.courseproject.model.login.LoginDao
 import com.example.courseproject.model.login.LoginEntity
+import com.example.courseproject.model.meal.MealDao
+import com.example.courseproject.model.meal.MealEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [LoginEntity::class, GuestEntity::class], version = 1, exportSchema = true)
+@Database(entities = [LoginEntity::class, GuestEntity::class, MealEntity::class], version = 1, exportSchema = true)
 abstract class HotelRoomDatabase : RoomDatabase() {
 
     abstract fun loginDao(): LoginDao
 
     abstract fun guestDao(): GuestDao
+
+    abstract fun mealDao(): MealDao
 
     companion object {
 

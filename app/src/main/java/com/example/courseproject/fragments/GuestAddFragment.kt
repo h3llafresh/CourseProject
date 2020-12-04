@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.courseproject.R
 import com.example.courseproject.databinding.FragmentAddUserBinding
 import com.example.courseproject.model.guest.GuestEntity
-import com.example.courseproject.viewmodels.AddGuestViewModel
+import com.example.courseproject.viewmodels.GuestAddViewModel
 import com.google.android.material.textfield.TextInputLayout
 
 class GuestAddFragment : Fragment() {
@@ -21,7 +21,7 @@ class GuestAddFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val addGuestViewModel by viewModels<AddGuestViewModel>()
+    private val addGuestViewModel by viewModels<GuestAddViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

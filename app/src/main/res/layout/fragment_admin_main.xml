@@ -28,12 +28,12 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/guest_viewholder"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_services_admin_main"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -46,14 +46,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_menu_admin_main"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:listitem="@layout/dish_viewholder" />
+            tools:listitem="@layout/meal_viewholder"
+            tools:visibility="visible"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"

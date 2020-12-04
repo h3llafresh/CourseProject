@@ -32,4 +32,5 @@
     <string name="delete_image_desc">delete image</string>
     <string name="button_update_text">UPDATE</string>
     <string name="text_update_guest">Update guest</string>
+    <string name="meal_info_text">Meal info</string>
 </resources>
