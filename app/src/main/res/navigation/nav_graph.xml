@@ -62,6 +62,12 @@
         <action
             android:id="@+id/action_adminMainFragment_to_mealAddFragment"
             app:destination="@id/mealAddFragment" />
+        <action
+            android:id="@+id/action_adminMainFragment_to_serviceAddFragment"
+            app:destination="@id/serviceAddFragment" />
+        <action
+            android:id="@+id/action_adminMainFragment_to_serviceInfoAdminFragment"
+            app:destination="@id/serviceInfoAdminFragment" />
     </fragment>
 
     <fragment
@@ -111,6 +117,28 @@
         android:name="com.example.courseproject.fragments.MealUpdateFragment"
         android:label="MealUpdateFragment" >
         <argument android:name="mealID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/serviceAddFragment"
+        android:name="com.example.courseproject.fragments.ServiceAddFragment"
+        android:label="ServiceAddFragment" />
+    <fragment
+        android:id="@+id/serviceInfoAdminFragment"
+        android:name="com.example.courseproject.fragments.ServiceInfoAdminFragment"
+        android:label="ServiceInfoAdminFragment" >
+        <argument android:name="serviceID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_serviceInfoAdminFragment_to_serviceUpdateFragment"
+            app:destination="@id/serviceUpdateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/serviceUpdateFragment"
+        android:name="com.example.courseproject.fragments.ServiceUpdateFragment"
+        android:label="ServiceUpdateFragment" >
+        <argument
+            android:name="serviceID"
             app:argType="integer" />
     </fragment>
 </navigation>
