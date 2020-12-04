@@ -20,7 +20,7 @@ class HotelRepository(hotelDatabase: HotelRoomDatabase) {
 
     var services: Flow<List<ServiceEntity>>? = null
 
-    suspend fun getUserLoginData(inputLogin: String): LoginEntity {
+    fun getUserLoginData(inputLogin: String): LoginEntity {
         return loginDao.getUserLogin(inputLogin)
     }
 
@@ -86,5 +86,9 @@ class HotelRepository(hotelDatabase: HotelRoomDatabase) {
 
     suspend fun updateService(service: ServiceEntity) {
         serviceDao.updateService(service)
+    }
+
+    suspend fun updateLogin(newLogin: LoginEntity) {
+        loginDao.updateLogin(newLogin)
     }
 }

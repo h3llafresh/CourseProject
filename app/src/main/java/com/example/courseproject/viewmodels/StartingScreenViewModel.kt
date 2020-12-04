@@ -28,8 +28,11 @@ class StartingScreenViewModel(application: Application) :
                         StartingScreenFragmentDirections.actionStartScreenFragmentToAdminMainFragment()
                     view.findNavController().navigate(action)
                 } else {
+                    val userID = appPreferences.getInt(Constants.USER_ID, 0)
                     val action =
-                        StartingScreenFragmentDirections.actionStartScreenFragmentToUserMainFragment()
+                        StartingScreenFragmentDirections.actionStartScreenFragmentToUserMainFragment(
+                            userID
+                        )
                     view.findNavController().navigate(action)
                 }
             } else {

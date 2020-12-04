@@ -45,9 +45,7 @@ abstract class HotelRoomDatabase : RoomDatabase() {
             }
 
             suspend fun populateDatabase(loginDao: LoginDao) {
-                var login = LoginEntity(1, "admin", "admin", true)
-                loginDao.insertLogin(login)
-                login = LoginEntity(2, "user", "user", false)
+                val login = LoginEntity(0, "admin", "admin", true)
                 loginDao.insertLogin(login)
             }
         }

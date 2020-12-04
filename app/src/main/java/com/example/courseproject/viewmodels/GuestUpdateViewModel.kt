@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.courseproject.HotelRepository
 import com.example.courseproject.model.HotelRoomDatabase
 import com.example.courseproject.model.guest.GuestEntity
+import com.example.courseproject.model.login.LoginEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -21,6 +22,12 @@ class GuestUpdateViewModel(application: Application) : AndroidViewModel(applicat
     fun updateGuest(guestUpdated: GuestEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateGuest(guestUpdated)
+        }
+    }
+
+    fun updateLogin(updatedLogin: LoginEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateLogin(updatedLogin)
         }
     }
 }

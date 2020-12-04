@@ -72,6 +72,12 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener, OnMealClickLis
             true
         }
 
+        binding.fragmentAdminMainToolbar.exitButton.setOnClickListener{
+            adminMainViewModel.exitFromAccount()
+            val action = AdminMainFragmentDirections.actionAdminMainFragmentToLoginFragment()
+            findNavController().navigate(action)
+        }
+
         recyclerGuests.apply {
             adapter = guestAdapter
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
@@ -122,7 +128,6 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener, OnMealClickLis
             }
         }
     }
-
     override fun onStart() {
         super.onStart()
         val bottomNav = binding.bottomNavigationAdminMain

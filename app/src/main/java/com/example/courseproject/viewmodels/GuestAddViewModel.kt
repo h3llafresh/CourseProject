@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.courseproject.HotelRepository
 import com.example.courseproject.model.HotelRoomDatabase
 import com.example.courseproject.model.guest.GuestEntity
+import com.example.courseproject.model.login.LoginEntity
 import kotlinx.coroutines.launch
 
 class GuestAddViewModel(application: Application) : AndroidViewModel(application) {
@@ -19,6 +20,12 @@ class GuestAddViewModel(application: Application) : AndroidViewModel(application
     fun addGuest(guest: GuestEntity) {
         viewModelScope.launch {
             repository.addGuest(guest)
+        }
+    }
+
+    fun addLogin(login: LoginEntity) {
+        viewModelScope.launch {
+            repository.insertLogin(login)
         }
     }
 }

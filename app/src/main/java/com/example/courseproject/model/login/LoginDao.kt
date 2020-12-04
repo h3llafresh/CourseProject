@@ -6,7 +6,7 @@ import com.example.courseproject.model.guest.GuestAndLogin
 @Dao
 interface LoginDao {
     @Query("SELECT * FROM logins_and_passwords WHERE login = :inputLogin")
-    suspend fun getUserLogin(inputLogin: String): LoginEntity
+    fun getUserLogin(inputLogin: String): LoginEntity
 
     @Transaction
     @Query("SELECT * FROM logins_and_passwords")
@@ -14,6 +14,9 @@ interface LoginDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertLogin(newLogin: LoginEntity)
+
+    @Update
+    suspend fun updateLogin(newLogin: LoginEntity)
 
     @Query("DELETE FROM logins_and_passwords")
     suspend fun deleteAllLogins()

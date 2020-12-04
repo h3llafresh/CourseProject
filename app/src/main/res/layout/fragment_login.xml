@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/include_toolbar_login_fragment"
-        layout="@layout/toolbar_main" />
+        layout="@layout/toolbar_login" />
 
     <ImageView
         android:id="@+id/image_welcome"

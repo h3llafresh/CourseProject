@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.courseproject.R
 import com.example.courseproject.databinding.FragmentAddUserBinding
 import com.example.courseproject.model.guest.GuestEntity
+import com.example.courseproject.model.login.LoginEntity
 import com.example.courseproject.viewmodels.GuestAddViewModel
 import com.google.android.material.textfield.TextInputLayout
 
@@ -36,6 +37,8 @@ class GuestAddFragment : Fragment() {
         setRalewayFont(binding.checkInWrapper)
         setRalewayFont(binding.checkOutWrapper)
         setRalewayFont(binding.sumToPayWrapper)
+        setRalewayFont(binding.addUserLoginWrapper)
+        setRalewayFont(binding.addUserPasswordWrapper)
         return binding.root
     }
 
@@ -60,6 +63,8 @@ class GuestAddFragment : Fragment() {
             val checkInDate = binding.checkInDateInput.text.toString()
             val checkOutDate = binding.checkOutDateInput.text.toString()
             val sumToPay = binding.sumToPayInput.text.toString()
+            val login = binding.addUserLoginInput.text.toString()
+            val password = binding.addUserPasswordInput.text.toString()
 
             if (firstName.isNotEmpty()
                 && lastName.isNotEmpty()
@@ -80,7 +85,13 @@ class GuestAddFragment : Fragment() {
                     hasExtraService = if (hasExtraService) 1 else 0,
                     isRegularCustomer = if (isRegularCustomer) 1 else 0
                 )
+                val loginInfo = LoginEntity(
+                    login = login,
+                    password = password,
+                    isAdmin = false
+                )
                 addGuestViewModel.addGuest(guest)
+                addGuestViewModel.addLogin(loginInfo)
                 findNavController().popBackStack()
                 Toast.makeText(context, "Guest added!", Toast.LENGTH_SHORT).show()
             } else {

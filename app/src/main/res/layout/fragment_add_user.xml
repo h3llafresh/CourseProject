@@ -204,6 +204,56 @@
                     android:textSize="@dimen/text_size_20" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_user_login_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_8"
+                app:boxStrokeColor="@color/colorAccent"
+                app:boxStrokeWidth="@dimen/input_border_size"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sum_to_pay_wrapper">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_user_login_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_guest_login"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:lines="1"
+                android:textSize="@dimen/text_size_20" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_user_password_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_8"
+                app:boxStrokeColor="@color/colorAccent"
+                app:boxStrokeWidth="@dimen/input_border_size"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_user_login_wrapper">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_user_password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_guest_password"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:lines="1"
+                android:textSize="@dimen/text_size_20" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/radio_regular_customer"
                 android:layout_width="wrap_content"
@@ -213,7 +263,7 @@
                 android:hint="@string/add_regular_customer"
                 android:textSize="@dimen/text_size_20"
                 android:fontFamily="@font/raleway"
-                app:layout_constraintTop_toBottomOf="@id/sum_to_pay_wrapper"
+                app:layout_constraintTop_toBottomOf="@id/add_user_password_wrapper"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <com.google.android.material.radiobutton.MaterialRadioButton

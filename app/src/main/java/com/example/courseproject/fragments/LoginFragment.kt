@@ -38,6 +38,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.buttonLogin.setOnClickListener {
             val loginInputText = binding.loginInput.text.toString()
             val passwordInputText = binding.passwordInput.text.toString()
