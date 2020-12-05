@@ -5,31 +5,31 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.courseproject.HotelRepository
 import com.example.courseproject.model.HotelRoomDatabase
-import com.example.courseproject.model.meal.MealEntity
+import com.example.courseproject.model.service.ServiceEntity
 import kotlinx.coroutines.runBlocking
 
-class MealInfoViewModel(application: Application) : AndroidViewModel(application) {
+class ServiceInfoAdminViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: HotelRepository
 
-    private var _meal: MealEntity? = null
+    private var _service: ServiceEntity? = null
 
-    val meal get() = _meal!!
+    val service get() = _service!!
 
     init {
         val hotelDatabase = HotelRoomDatabase.getDatabase(application, viewModelScope)
         repository = HotelRepository(hotelDatabase)
     }
 
-    fun selectMeal(mealID: Int) {
+    fun selectService(serviceID: Int) {
         runBlocking {
-            _meal = repository.selectMeal(mealID)
+            _service = repository.selectService(serviceID)
         }
     }
 
-    fun deleteMeal() {
+    fun deleteService(service: ServiceEntity) {
         runBlocking {
-            repository.deleteMeal(meal)
+            repository.deleteService(service)
         }
     }
 }

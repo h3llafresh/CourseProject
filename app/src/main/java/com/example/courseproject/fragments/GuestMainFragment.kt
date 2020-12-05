@@ -6,7 +6,6 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -35,6 +34,8 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
 
     private var guest: GuestEntity? = null
 
+    private var guestID: Int? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,23 +47,37 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val guestID = args.guestID - 1
-        guestMainViewModel.selectGuest(guestID)
+        guestID = args.guestID - 1
+        guestMainViewModel.selectGuest(guestID!!)
         guest = guestMainViewModel.guest
+        val bottomNav = binding.bottomNavigationGuestMain
         val recyclerMeals = binding.recyclerMenuGuestMain
         val recyclerServices = binding.recyclerServicesGuestMain
         val noServicesText = binding.noExtrasText
         val getAccessText = binding.getAccessText
         val expensesText = binding.expensesTextView
         val expensesValue = binding.expensesTextValue
+        val sortButton = binding.fragmentGuestMainToolbar.sortButton
         val mealAdapter = MealAdapter(this)
         val serviceAdapter = ServiceAdapter(this)
 
         expensesValue.text = "${guest?.sumToPay.toString()}$"
 
-        binding.bottomNavigationGuestMain.setOnNavigationItemSelectedListener {
+        binding.fragmentGuestMainToolbar.sortButton.setOnClickListener {
+            when (bottomNav.selectedItemId) {
+                R.id.action_menu_user -> {
+                    mealAdapter.addItems(mealAdapter.meals.sortedBy { it.name })
+                }
+                R.id.action_services_user -> {
+                    serviceAdapter.addItems(serviceAdapter.services.sortedBy { it.name })
+                }
+            }
+        }
+
+        bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.action_expenses_user -> {
+                    sortButton.visibility = GONE
                     expensesText.visibility = VISIBLE
                     expensesValue.visibility = VISIBLE
                     noServicesText.visibility = GONE
@@ -71,6 +86,7 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
                     recyclerServices.visibility = GONE
                 }
                 R.id.action_menu_user -> {
+                    sortButton.visibility = VISIBLE
                     expensesText.visibility = GONE
                     expensesValue.visibility = GONE
                     if (guest?.hasExtraService == 1) {
@@ -85,6 +101,7 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
                     recyclerServices.visibility = GONE
                 }
                 R.id.action_services_user -> {
+                    sortButton.visibility = VISIBLE
                     expensesText.visibility = GONE
                     expensesValue.visibility = GONE
                     if (guest?.hasExtraService == 1) {
@@ -102,7 +119,7 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
             true
         }
 
-        binding.fragmentAdminMainToolbar.exitButton.setOnClickListener {
+        binding.fragmentGuestMainToolbar.exitButton.setOnClickListener {
             guestMainViewModel.exitFromAccount()
             val action = GuestMainFragmentDirections.actionUserMainFragmentToLoginFragment()
             findNavController().navigate(action)
@@ -136,10 +153,12 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
         val recyclerServices = binding.recyclerServicesGuestMain
         val noServicesText = binding.noExtrasText
         val getAccessText = binding.getAccessText
+        val sortButton = binding.fragmentGuestMainToolbar.sortButton
         val expensesText = binding.expensesTextView
         val expensesValue = binding.expensesTextValue
         when (bottomNav.selectedItemId) {
             R.id.action_expenses_user -> {
+                sortButton.visibility = GONE
                 expensesText.visibility = VISIBLE
                 expensesValue.visibility = VISIBLE
                 recyclerMeals.visibility = GONE
@@ -149,6 +168,7 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
             }
 
             R.id.action_menu_user -> {
+                sortButton.visibility = VISIBLE
                 expensesText.visibility = GONE
                 expensesValue.visibility = GONE
                 if (guest?.hasExtraService == 1) {
@@ -164,6 +184,7 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
             }
 
             R.id.action_services_user -> {
+                sortButton.visibility = VISIBLE
                 expensesText.visibility = GONE
                 expensesValue.visibility = GONE
                 recyclerMeals.visibility = GONE
@@ -186,10 +207,16 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
     }
 
     override fun onMealClicked(meal: MealEntity) {
-        Toast.makeText(context, "Meal", Toast.LENGTH_SHORT).show()
+        val action = GuestMainFragmentDirections.actionUserMainFragmentToMealInfoGuestFragment(
+            guest?.guestID ?: 0, meal.mealID
+        )
+        findNavController().navigate(action)
     }
 
     override fun onServiceClicked(service: ServiceEntity) {
-        Toast.makeText(context, "Service", Toast.LENGTH_SHORT).show()
+        val action = GuestMainFragmentDirections.actionUserMainFragmentToServiceInfoGuestFragment(
+            guest?.guestID ?: 0, service.serviceID
+        )
+        findNavController().navigate(action)
     }
 }

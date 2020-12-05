@@ -91,4 +91,12 @@ class HotelRepository(hotelDatabase: HotelRoomDatabase) {
     suspend fun updateLogin(newLogin: LoginEntity) {
         loginDao.updateLogin(newLogin)
     }
+
+    suspend fun orderMeal(mealID: Int, guestID: Int) {
+        guestDao.orderMeal(mealID, guestID)
+    }
+
+    suspend fun orderService(serviceID: Int, guestID: Int) {
+        guestDao.orderService(serviceID, guestID)
+    }
 }

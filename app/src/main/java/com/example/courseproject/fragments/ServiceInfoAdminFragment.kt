@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.courseproject.databinding.FragmentServiceInfoAdminBinding
-import com.example.courseproject.viewmodels.ServiceInfoViewModel
+import com.example.courseproject.viewmodels.ServiceInfoAdminViewModel
 
 class ServiceInfoAdminFragment : Fragment() {
 
@@ -18,7 +18,7 @@ class ServiceInfoAdminFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val serviceInfoViewModel by viewModels<ServiceInfoViewModel>()
+    private val serviceInfoViewModel by viewModels<ServiceInfoAdminViewModel>()
 
     private val args: ServiceInfoAdminFragmentArgs by navArgs()
 

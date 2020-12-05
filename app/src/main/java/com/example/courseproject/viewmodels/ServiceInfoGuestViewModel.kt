@@ -6,9 +6,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.courseproject.HotelRepository
 import com.example.courseproject.model.HotelRoomDatabase
 import com.example.courseproject.model.service.ServiceEntity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class ServiceInfoViewModel(application: Application) : AndroidViewModel(application) {
+class ServiceInfoGuestViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: HotelRepository
 
@@ -27,9 +29,9 @@ class ServiceInfoViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-    fun deleteService(service: ServiceEntity) {
-        runBlocking {
-            repository.deleteService(service)
+    fun orderService(serviceID: Int, guestID: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.orderService(serviceID, guestID)
         }
     }
 }

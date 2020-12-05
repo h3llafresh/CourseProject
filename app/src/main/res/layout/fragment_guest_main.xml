@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            android:id="@+id/fragment_admin_main_toolbar"
+            android:id="@+id/fragment_guest_main_toolbar"
             layout="@layout/toolbar_main" />
 
         <androidx.recyclerview.widget.RecyclerView

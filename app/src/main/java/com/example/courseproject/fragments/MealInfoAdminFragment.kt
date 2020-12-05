@@ -10,14 +10,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.courseproject.databinding.FragmentMealInfoAdminBinding
-import com.example.courseproject.viewmodels.MealInfoViewModel
+import com.example.courseproject.viewmodels.MealInfoAdminViewModel
 
 class MealInfoAdminFragment : Fragment() {
     private var _binding: FragmentMealInfoAdminBinding? = null
 
     private val binding get() = _binding!!
 
-    private val mealInfoViewModel by viewModels<MealInfoViewModel>()
+    private val mealInfoViewModel by viewModels<MealInfoAdminViewModel>()
 
     private val args: MealInfoAdminFragmentArgs by navArgs()
 

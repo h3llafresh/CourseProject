@@ -72,7 +72,21 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener, OnMealClickLis
             true
         }
 
-        binding.fragmentAdminMainToolbar.exitButton.setOnClickListener{
+        binding.fragmentAdminMainToolbar.sortButton.setOnClickListener {
+            when (bottomNav.selectedItemId) {
+                R.id.action_guests_admin -> {
+                    guestAdapter.addItems(guestAdapter.guests.sortedBy { it.firstName })
+                }
+                R.id.action_menu_admin -> {
+                    mealAdapter.addItems(mealAdapter.meals.sortedBy { it.name })
+                }
+                R.id.action_services_admin -> {
+                    serviceAdapter.addItems(serviceAdapter.services.sortedBy { it.name })
+                }
+            }
+        }
+
+        binding.fragmentAdminMainToolbar.exitButton.setOnClickListener {
             adminMainViewModel.exitFromAccount()
             val action = AdminMainFragmentDirections.actionAdminMainFragmentToLoginFragment()
             findNavController().navigate(action)
@@ -128,12 +142,14 @@ class AdminMainFragment : Fragment(), OnGuestHolderClickListener, OnMealClickLis
             }
         }
     }
+
     override fun onStart() {
         super.onStart()
         val bottomNav = binding.bottomNavigationAdminMain
         val recyclerGuests = binding.recyclerGuestsAdminMain
         val recyclerMeals = binding.recyclerMenuAdminMain
         val recyclerServices = binding.recyclerServicesAdminMain
+
         when (bottomNav.selectedItemId) {
             R.id.action_guests_admin -> {
                 recyclerGuests.visibility = VISIBLE
