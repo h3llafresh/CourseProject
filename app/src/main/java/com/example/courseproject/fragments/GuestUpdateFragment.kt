@@ -62,6 +62,7 @@ class GuestUpdateFragment : Fragment() {
             val guestID = args.guestID
             val firstName = binding.firstNameInputUpdate.text.toString()
             val lastName = binding.lastNameInputUpdate.text.toString()
+            val roomNumber = binding.roomNumberInputUpdate.text.toString()
             val phoneNumber = binding.phoneNumberInputUpdate.text.toString()
             val birthDate = binding.birthDateInputUpdate.text.toString()
             val checkInDate = binding.checkInDateInputUpdate.text.toString()
@@ -82,11 +83,19 @@ class GuestUpdateFragment : Fragment() {
                     guestID = guestID,
                     firstName = firstName,
                     secondName = lastName,
+                    roomNumber = roomNumber.toInt(),
                     birthDate = birthDate,
                     phoneNumber = phoneNumber.toInt(),
                     checkInDate = checkInDate,
                     checkOutDate = checkOutDate,
-                    sumToPay = sumToPay.toInt(),
+                    sumToPay = if (sumToPay.toInt() == 0) {
+                        guestUpdateViewModel.calculateCost(
+                            roomNumber.toInt(),
+                            checkInDate,
+                            checkOutDate,
+                            isRegularCustomer
+                        )
+                    } else sumToPay.toInt(),
                     hasExtraService = if (hasExtraService) 1 else 0,
                     isRegularCustomer = if (isRegularCustomer) 1 else 0
                 )

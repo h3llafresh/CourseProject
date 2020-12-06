@@ -59,6 +59,7 @@ class GuestAddFragment : Fragment() {
         binding.buttonAdd.setOnClickListener {
             val firstName = binding.firstNameInput.text.toString()
             val lastName = binding.lastNameInput.text.toString()
+            val roomNumber = binding.roomNumberInput.text.toString()
             val phoneNumber = binding.phoneNumberInput.text.toString()
             val birthDate = binding.birthDateInput.text.toString()
             val checkInDate = binding.checkInDateInput.text.toString()
@@ -78,13 +79,21 @@ class GuestAddFragment : Fragment() {
                 val guest = GuestEntity(
                     firstName = firstName,
                     secondName = lastName,
+                    roomNumber = roomNumber.toInt(),
                     birthDate = birthDate,
                     phoneNumber = phoneNumber.toInt(),
                     checkInDate = checkInDate,
                     checkOutDate = checkOutDate,
-                    sumToPay = sumToPay.toInt(),
-                    hasExtraService = if (hasExtraService) 1 else 0,
-                    isRegularCustomer = if (isRegularCustomer) 1 else 0
+                    sumToPay = if (sumToPay.toInt() == 0) {
+                        addGuestViewModel.calculateCost(
+                            roomNumber.toInt(),
+                            checkInDate,
+                            checkOutDate,
+                            isRegularCustomer
+                        )
+                    } else sumToPay.toInt(),
+                hasExtraService = if (hasExtraService) 1 else 0,
+                isRegularCustomer = if (isRegularCustomer) 1 else 0
                 )
                 val loginInfo = LoginEntity(
                     login = login,

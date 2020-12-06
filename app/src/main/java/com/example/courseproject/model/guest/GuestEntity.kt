@@ -9,6 +9,7 @@ data class GuestEntity(
     @PrimaryKey(autoGenerate = true) val guestID: Int = 0,
     @ColumnInfo val firstName: String,
     @ColumnInfo val secondName: String,
+    @ColumnInfo val roomNumber: Int,
     @ColumnInfo val birthDate: String,
     @ColumnInfo val phoneNumber: Int,
     @ColumnInfo val checkInDate: String,

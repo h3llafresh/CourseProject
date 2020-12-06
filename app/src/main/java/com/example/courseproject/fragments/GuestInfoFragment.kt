@@ -38,7 +38,7 @@ class GuestInfoFragment : Fragment() {
         binding.let {
             it.guestInfoFirstNameValue.text = guest.firstName
             it.guestInfoLastNameValue.text = guest.secondName
-            it.guestInfoRoomNumberValue.text = guest.guestID.toString()
+            it.guestInfoRoomNumberValue.text = guest.roomNumber.toString()
             it.guestInfoBirthDateValue.text = guest.birthDate
             it.guestInfoPhoneNumberValue.text = guest.phoneNumber.toString()
             it.guestInfoCheckIdDateValue.text = guest.checkInDate

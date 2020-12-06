@@ -8,6 +8,6 @@ class GuestViewHolder(private val binding: GuestViewholderBinding) :
     RecyclerView.ViewHolder(binding.root) {
         fun bind(guest: GuestEntity) {
             binding.guestNameViewholder.text = "${guest.firstName} ${guest.secondName}"
-            binding.guestRoomViewholder.text = "Room ${guest.guestID}"
+            binding.guestRoomViewholder.text = "Room ${guest.roomNumber}"
         }
 }
