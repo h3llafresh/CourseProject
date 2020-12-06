@@ -34,6 +34,7 @@ class GuestUpdateFragment : Fragment() {
         _binding = FragmentGuestUpdateBinding.inflate(inflater, container, false)
         setRalewayFont(binding.firstNameWrapperUpdate)
         setRalewayFont(binding.lastNameWrapperUpdate)
+        setRalewayFont(binding.roomNumberWrapperUpdate)
         setRalewayFont(binding.phoneNumberWrapperUpdate)
         setRalewayFont(binding.birthDateWrapperUpdate)
         setRalewayFont(binding.checkInWrapperUpdate)

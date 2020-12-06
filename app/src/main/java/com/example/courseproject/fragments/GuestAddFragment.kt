@@ -32,6 +32,7 @@ class GuestAddFragment : Fragment() {
         _binding = FragmentAddUserBinding.inflate(inflater, container, false)
         setRalewayFont(binding.firstNameWrapper)
         setRalewayFont(binding.lastNameWrapper)
+        setRalewayFont(binding.roomNumberWrapper)
         setRalewayFont(binding.phoneNumberWrapper)
         setRalewayFont(binding.birthDateWrapper)
         setRalewayFont(binding.checkInWrapper)

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -57,6 +58,9 @@ class LoginFragment : Fragment() {
                     binding.loginInputWrapper.error = null
                     binding.passwordInputWrapper.error = null
                     loginViewModel.authorizeUser(loginInputText, passwordInputText, view)
+                    if (loginViewModel.noLoginFound) {
+                        Toast.makeText(context, "Oops! No user found \nwith such login info :(", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }

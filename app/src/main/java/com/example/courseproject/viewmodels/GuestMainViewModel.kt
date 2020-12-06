@@ -22,7 +22,7 @@ class GuestMainViewModel(application: Application) : AndroidViewModel(applicatio
     init {
         val hotelDatabase = HotelRoomDatabase.getDatabase(application, viewModelScope)
         repository = HotelRepository(hotelDatabase)
-        refreshMealsData()
+        refreshTodayMealsData()
         refreshServicesData()
     }
 
@@ -35,9 +35,9 @@ class GuestMainViewModel(application: Application) : AndroidViewModel(applicatio
     private val _services = repository.services?.asLiveData()
     val services get() = _services!!
 
-    private fun refreshMealsData() {
+    private fun refreshTodayMealsData() {
         viewModelScope.launch {
-            repository.refreshMeals()
+            repository.refreshTodayMeals()
         }
     }
 

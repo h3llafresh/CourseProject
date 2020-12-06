@@ -26,6 +26,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     var userLoginData: LoginEntity? = null
 
+    var noLoginFound = false
+
     init {
         val hotelDatabase = HotelRoomDatabase.getDatabase(application, viewModelScope)
         repository = HotelRepository(hotelDatabase)
@@ -46,6 +48,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             loginInfo?.password == inputPassword && loginInfo.isAdmin -> {
                 appPreferences.edit().putBoolean(AUTHORIZATION_STATE, true).apply()
                 appPreferences.edit().putBoolean(IS_ADMIN, true).apply()
+                noLoginFound = false
                 val action = LoginFragmentDirections.actionLoginFragmentToAdminMainFragment()
                 view.findNavController().navigate(action)
             }
@@ -54,9 +57,12 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 appPreferences.edit().putBoolean(AUTHORIZATION_STATE, true).apply()
                 appPreferences.edit().putInt(USER_ID, loginInfo.loginID).apply()
                 appPreferences.edit().putBoolean(IS_ADMIN, false).apply()
+                noLoginFound = false
                 val action = LoginFragmentDirections.actionLoginFragmentToUserMainFragment(loginInfo.loginID)
                 view.findNavController().navigate(action)
             }
+
+            else -> noLoginFound = true
         }
     }
 }

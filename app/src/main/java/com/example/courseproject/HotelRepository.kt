@@ -6,6 +6,8 @@ import com.example.courseproject.model.login.LoginEntity
 import com.example.courseproject.model.meal.MealEntity
 import com.example.courseproject.model.service.ServiceEntity
 import kotlinx.coroutines.flow.Flow
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HotelRepository(hotelDatabase: HotelRoomDatabase) {
 
@@ -13,6 +15,8 @@ class HotelRepository(hotelDatabase: HotelRoomDatabase) {
     private val guestDao = hotelDatabase.guestDao()
     private val mealDao = hotelDatabase.mealDao()
     private val serviceDao = hotelDatabase.serviceDao()
+    private val todayDate = SimpleDateFormat("dd.MM.yyyy", Locale.US)
+        .format(Calendar.getInstance().time)
 
     var guests: Flow<List<GuestEntity>>? = null
 
@@ -46,6 +50,10 @@ class HotelRepository(hotelDatabase: HotelRoomDatabase) {
 
     fun refreshMeals() {
         meals = mealDao.selectAllMeals()
+    }
+
+    fun refreshTodayMeals() {
+        meals = mealDao.selectAllTodayMeals(todayDate)
     }
 
     fun refreshServices() {
