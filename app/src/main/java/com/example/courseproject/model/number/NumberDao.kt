@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface NumberDao {
 
-    @Query("SELECT * FROM numbers WHERE numberID = :numberID")
+    @Query("SELECT * FROM Number WHERE numberID = :numberID")
     suspend fun selectHotelNumber(numberID: Int): NumberEntity
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

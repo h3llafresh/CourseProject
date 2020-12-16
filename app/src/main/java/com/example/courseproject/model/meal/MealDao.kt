@@ -6,13 +6,13 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MealDao {
 
-    @Query("SELECT * FROM meals")
+    @Query("SELECT * FROM Meal")
     fun selectAllMeals(): Flow<List<MealEntity>>
 
-    @Query("SELECT * FROM meals WHERE date = :todayDate")
+    @Query("SELECT * FROM Meal WHERE date = :todayDate")
     fun selectAllTodayMeals(todayDate: String): Flow<List<MealEntity>>
 
-    @Query("SELECT * FROM meals WHERE mealID = :mealID")
+    @Query("SELECT * FROM Meal WHERE mealID = :mealID")
     suspend fun selectMeal(mealID: Int): MealEntity
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

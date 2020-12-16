@@ -6,10 +6,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ServiceDao {
 
-    @Query("SELECT * FROM services")
+    @Query("SELECT * FROM Service")
     fun selectAllServices(): Flow<List<ServiceEntity>>
 
-    @Query("SELECT * FROM services WHERE serviceID = :serviceID")
+    @Query("SELECT * FROM Service WHERE serviceID = :serviceID")
     suspend fun selectService(serviceID: Int): ServiceEntity
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

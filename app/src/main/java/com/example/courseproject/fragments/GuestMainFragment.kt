@@ -94,6 +94,7 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
                         noServicesText.visibility = GONE
                         getAccessText.visibility = GONE
                     } else {
+                        sortButton.visibility = GONE
                         recyclerMeals.visibility = GONE
                         noServicesText.visibility = VISIBLE
                         getAccessText.visibility = VISIBLE
@@ -109,6 +110,7 @@ class GuestMainFragment : Fragment(), OnMealClickListener, OnServiceClickListene
                         noServicesText.visibility = GONE
                         getAccessText.visibility = GONE
                     } else {
+                        sortButton.visibility = GONE
                         recyclerServices.visibility = GONE
                         noServicesText.visibility = VISIBLE
                         getAccessText.visibility = VISIBLE

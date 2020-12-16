@@ -6,18 +6,18 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface GuestDao {
 
-    @Query("SELECT * FROM guests")
+    @Query("SELECT * FROM Guest")
     fun selectAllGuests(): Flow<List<GuestEntity>>
 
-    @Query("SELECT * FROM guests WHERE guestID = :selectedGuestID")
+    @Query("SELECT * FROM Guest WHERE guestID = :selectedGuestID")
     suspend fun selectGuest(selectedGuestID: Int): GuestEntity
 
-    @Query("UPDATE guests SET sumToPay = sumToPay + " +
-            "(SELECT cost FROM meals WHERE mealID = :selectedMealID) WHERE guestID = :selectedGuestID")
+    @Query("UPDATE Guest SET sumToPay = sumToPay + " +
+            "(SELECT cost FROM Meal WHERE mealID = :selectedMealID) WHERE guestID = :selectedGuestID")
     suspend fun orderMeal(selectedMealID: Int, selectedGuestID: Int)
 
-    @Query("UPDATE guests SET sumToPay = sumToPay" +
-            " + (SELECT cost FROM services WHERE serviceID = :selectedServiceID) WHERE guestID = :selectedGuestID")
+    @Query("UPDATE Guest SET sumToPay = sumToPay" +
+            " + (SELECT cost FROM Service WHERE serviceID = :selectedServiceID) WHERE guestID = :selectedGuestID")
     suspend fun orderService(selectedServiceID: Int, selectedGuestID: Int)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
